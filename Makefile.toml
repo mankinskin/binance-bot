@@ -11,10 +11,16 @@ dependencies = ["start"]
 description = "Start server"
 command = "cargo"
 args = ["run"]
-dependencies = ["client"]
+dependencies = ["client", "server"]
+
+[tasks.server]
+description = "Build server"
+command = "cargo"
+args = ["build", "--bin", "server"]
 
 [tasks.client]
 description = "Build client"
-command = "cargo"
-args = ["make", "--cwd", "./client"]
+install_crate = { crate_name = "wasm-pack", binary = "wasm-pack", test_arg = "-V" }
+command = "wasm-pack"
+args = ["build", "--target", "web", "--out-name", "package", "--dev"]
 
