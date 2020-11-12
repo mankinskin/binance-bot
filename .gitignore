@@ -1,6 +1,6 @@
 **/target
 /keys
 Cargo.lock
-/logs
+**/logs/*
 /test_database
 /binance_bot_database
